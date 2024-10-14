@@ -15,19 +15,9 @@ for (let row of rows) {
   guess = maskedWord;
 
   let cuvintePosibile = dictionarWords.filter(w => w.length === word.length);
-  cuvintePosibile = cuvintePosibile.filter(w => {
-    for (let i = 0; i < guess.length; i++) {
-      if (guess[i] !== "*" && guess[i] !== w[i]) {
-        return false; // if revealed letters don’t match, filter out
-      }
-    }
-    return true;
-  });
-  
-
 
   while (word !== guess) {
-  // verificam din nou posibilele cuvinte
+    // verificam cuvintele posibile
     cuvintePosibile = cuvintePosibile.filter(w => {
       for (let i = 0; i < guess.length; i++) {
         if (guess[i] !== "*" && guess[i] !== w[i]) {
