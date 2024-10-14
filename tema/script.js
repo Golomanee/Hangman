@@ -27,7 +27,15 @@ for (let row of rows) {
 
 
   while (word !== guess) {
-
+  // verificam din nou posibilele cuvinte
+    cuvintePosibile = cuvintePosibile.filter(w => {
+      for (let i = 0; i < guess.length; i++) {
+        if (guess[i] !== "*" && guess[i] !== w[i]) {
+          return false; // daca cuvintele nu contin literele ghicile le eliminam
+        }
+      }
+      return true;
+    });
     // daca mai am doar o posibila varianta de cuvant, acela este
     if (cuvintePosibile.length === 1) {
       guess = cuvintePosibile[0];
@@ -41,16 +49,6 @@ for (let row of rows) {
       index_alpha++; 
       continue; 
     }
-
-    // verificam din nou posibilele cuvinte
-    cuvintePosibile = cuvintePosibile.filter(w => {
-      for (let i = 0; i < guess.length; i++) {
-        if (guess[i] !== "*" && guess[i] !== w[i]) {
-          return false; // daca cuvintele nu contin literele ghicile le eliminam
-        }
-      }
-      return true;
-    });
 
     console.log(cuvintePosibile)
 
